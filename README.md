@@ -14,7 +14,7 @@ Flu vaccine hesitancy is driven by factors like misinformation, safety fears and
 #### 1.3 Main Objective
 To utilize machine learning to understand flu vaccine hesitancy by predicting the likelihood of individuals receiving their seasonal flu vaccines.
  - To identify socio-cultural, psychological, and communication-related factors that affect flu vaccine hesitancy.
- - Develop a predictive model for vaccine hesitancy based on historical data
+ - Develop a predictive model for vaccine hesitancy based on historical data.
 - Develop tailored recommendations to increase flu vaccine uptake. 
 
 ### 2. Data Understanding
