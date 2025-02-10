@@ -117,6 +117,19 @@
     </nav>
   </header>
 
+
+  @if(session()->has('message'))
+    <div class="alert alert-success alert-dismissible fade show" role="alert" style="width: 50%; text-align: center; margin: auto;">
+        {{ session()->get('message') }}
+        <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+  @endif
+
+
+
+
   <div class="page-hero bg-image overlay-dark" style="background-image: url(../assets/img/bg_image_1.jpg);">
     <div class="hero-section">
       <div class="container text-center wow zoomIn">
@@ -262,6 +275,8 @@
 <script src="../assets/vendor/wow/wow.min.js"></script>
 
 <script src="../assets/js/theme.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   
 </body>
 </html>
