@@ -8,7 +8,7 @@
 
   <meta name="copyright" content="MACode ID, https://macodeid.com/">
 
-  <title>One Health - Medical Center HTML5 Template</title>
+  <title>Lions Eye Sight Hospital</title>
 
   <link rel="stylesheet" href="../assets/css/maicons.css">
 
@@ -84,26 +84,32 @@
             </li>
 
             @if(Route::has('login'))
+  @auth
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        {{ Auth::user()->name }}
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item" href="{{ route('profile.show') }}">Profile</a>
+        <a class="dropdown-item" href="{{ route('logout') }}"
+           onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+          Logout
+        </a>
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+          @csrf
+        </form>
+      </div>
+    </li>
+  @else
+    <li class="nav-item">
+      <a class="btn btn-primary ml-lg-3" href="{{route('login')}}">Login</a>
+    </li>
+    <li class="nav-item">
+      <a class="btn btn-primary ml-lg-3" href="{{route('register')}}">Register</a>
+    </li>
+  @endauth
+@endif
 
-            @auth
-
-            <x-app-layout>
-
-            </x-app-layout>
-
-
-            @else
-
-            <li class="nav-item">
-              <a class="btn btn-primary ml-lg-3" href="{{route('login')}}">Login</a>
-            </li>
-            <li class="nav-item">
-              <a class="btn btn-primary ml-lg-3" href="{{route('register')}}">Register</a>
-            </li>
-
-            @endauth
-
-            @endif
 
           </ul>
         </div> <!-- .navbar-collapse -->
