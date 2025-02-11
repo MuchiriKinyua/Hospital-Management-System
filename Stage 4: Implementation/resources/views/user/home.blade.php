@@ -84,7 +84,11 @@
             </li>
 
             @if(Route::has('login'))
-  @auth
+            @auth
+            <li class="nav-item">
+              <a class="nav-link" style="background-color: greenyellow" href="{{url('myappointment')}}">My Appointment</a>
+            </li>
+
     <li class="nav-item dropdown">
       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         {{ Auth::user()->name }}
