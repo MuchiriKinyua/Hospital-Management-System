@@ -25,45 +25,74 @@
                 <!-- Form Section -->
                 <div class="col-md-6">
                     <h4 class="text-center mb-3">Enter Cell Details</h4>
-                    <form>
-                        <div class="form-group">
-                            <label for="clump_thickness">Clump Thickness</label>
-                            <input type="number" class="form-control" name="clump_thickness" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="uniform_cell_size">Uniform Cell Size</label>
-                            <input type="number" class="form-control" name="uniform_cell_size" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="uniform_cell_shape">Uniform Cell Shape</label>
-                            <input type="number" class="form-control" name="uniform_cell_shape" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="marginal_adhesion">Marginal Adhesion</label>
-                            <input type="number" class="form-control" name="marginal_adhesion" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="single_epithelial_size">Single Epithelial Cell Size</label>
-                            <input type="number" class="form-control" name="single_epithelial_size" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="bare_nuclei">Bare Nuclei</label>
-                            <input type="number" class="form-control" name="bare_nuclei" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="bland_chromatin">Bland Chromatin</label>
-                            <input type="number" class="form-control" name="bland_chromatin" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="normal_nucleoli">Normal Nucleoli</label>
-                            <input type="number" class="form-control" name="normal_nucleoli" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="mitoses">Mitoses</label>
-                            <input type="number" class="form-control" name="mitoses" required>
-                        </div>
-                        <button type="submit" class="btn btn-primary btn-lg btn-block">Predict Cancer</button>
-                    </form>
+                    <form id="predictionForm">
+    <div class="form-group">
+        <label for="clump_thickness">Clump Thickness</label>
+        <input type="number" class="form-control" name="clump_thickness" required>
+    </div>
+    <div class="form-group">
+        <label for="uniform_cell_size">Uniform Cell Size</label>
+        <input type="number" class="form-control" name="uniform_cell_size" required>
+    </div>
+    <div class="form-group">
+        <label for="uniform_cell_shape">Uniform Cell Shape</label>
+        <input type="number" class="form-control" name="uniform_cell_shape" required>
+    </div>
+    <div class="form-group">
+        <label for="marginal_adhesion">Marginal Adhesion</label>
+        <input type="number" class="form-control" name="marginal_adhesion" required>
+    </div>
+    <div class="form-group">
+        <label for="single_epithelial_size">Single Epithelial Cell Size</label>
+        <input type="number" class="form-control" name="single_epithelial_size" required>
+    </div>
+    <div class="form-group">
+        <label for="bare_nuclei">Bare Nuclei</label>
+        <input type="number" class="form-control" name="bare_nuclei" required>
+    </div>
+    <div class="form-group">
+        <label for="bland_chromatin">Bland Chromatin</label>
+        <input type="number" class="form-control" name="bland_chromatin" required>
+    </div>
+    <div class="form-group">
+        <label for="normal_nucleoli">Normal Nucleoli</label>
+        <input type="number" class="form-control" name="normal_nucleoli" required>
+    </div>
+    <div class="form-group">
+        <label for="mitoses">Mitoses</label>
+        <input type="number" class="form-control" name="mitoses" required>
+    </div>
+    <button type="submit" class="btn btn-primary btn-lg btn-block">Predict Cancer</button>
+</form>
+
+<br />
+<center>
+    <h1 id="prediction_result" style="background:#de5499; padding:10px; display:none;"></h1>
+</center>
+<br />
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#predictionForm").on("submit", function (e) {
+            e.preventDefault();
+            var formData = $(this).serialize(); // Serialize form data
+
+            $.ajax({
+                url: "http://127.0.0.1:5000/predict",
+                type: "POST",
+                data: formData,
+                success: function (response) {
+                    $("#prediction_result").text(response.prediction_text).show();
+                },
+                error: function () {
+                    $("#prediction_result").text("Error in prediction").show();
+                }
+            });
+        });
+    });
+</script>
+
                 </div>
             </div>
         </div>
