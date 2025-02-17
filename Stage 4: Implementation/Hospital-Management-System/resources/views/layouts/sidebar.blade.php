@@ -14,4 +14,14 @@
         </nav>
     </div>
 
+    @auth
+        <li class="nav-item">
+            @if(Auth::user()->usertype == 1)
+                <a class="nav-link" href="{{ route('profile.show') }}">Admin Profile</a>
+            @else
+                <a class="nav-link" href="{{ route('profile.show') }}">User Profile</a>
+            @endif
+        </li>
+    @endauth
+
 </aside>

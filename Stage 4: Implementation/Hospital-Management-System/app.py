@@ -20,7 +20,7 @@ def predict():
     df = pd.DataFrame(features_value, columns=features_name)
     output = model.predict(df)
 
-    res_val = "Malignant Breast Cancer" if output == 4 else "No Breast Cancer"
+    res_val = "Breast Cancer" if output == 4 else "No Breast Cancer"
 
     return jsonify({'prediction_text': f'Patient has {res_val}'})
 
