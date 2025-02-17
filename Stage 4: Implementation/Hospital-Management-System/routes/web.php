@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BreastCancerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,5 +25,6 @@ Auth::routes();
 Route::resource('appointments', App\Http\Controllers\AppointmentController::class);
 Route::resource('doctors', App\Http\Controllers\DoctorController::class);
 Route::resource('notifications', App\Http\Controllers\NotificationController::class);
-
 Route::resource('predictions', App\Http\Controllers\PredictionController::class);
+Route::get('/breast-cancer', [BreastCancerController::class, 'breastcancer']);
+
