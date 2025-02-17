@@ -1,4 +1,4 @@
-{{-- resources/views/user/profile.blade.php --}}
+{{-- resources/views/home/profile.blade.php --}}
 @extends('home.profile') <!-- Assuming you have a layout for user -->
 @section('content')
     <h1>User Profile</h1>
