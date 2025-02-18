@@ -15,11 +15,8 @@
         <div class="card shadow-lg p-4 bg-white rounded">
             <div class="row align-items-center">
                 <!-- SVG Image -->
-                <div class="col-md-6 text-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="200" height="200">
-                        <circle cx="50" cy="50" r="48" stroke="blue" stroke-width="4" fill="white"/>
-                        <path d="M50 12c-21 0 -38 17 -38 38s17 38 38 38 38 -17 38 -38 -17 -38 -38 -38zm0 66c-15 0 -28 -13 -28 -28s13 -28 28 -28 28 13 28 28 -13 28 -28 28z" fill="blue"/>
-                    </svg>
+                <div>
+                    <img src="/bg-doctor.png" alt="">
                 </div>
 
                 <!-- Form Section -->
