@@ -16,7 +16,7 @@
             <div class="row align-items-center">
                 <!-- SVG Image -->
                 <div>
-                    <img src="/bg-doctor.png" alt="">
+                    <img height="500px" width="500px" src="/breast cancer ribbon.jpg" alt="">
                 </div>
 
                 <!-- Form Section -->
