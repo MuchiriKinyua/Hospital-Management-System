@@ -1,13 +1,47 @@
 <li class="nav-item">
     <a href="{{ route('home') }}" class="nav-link {{ Request::is('home') ? 'active' : '' }}">
-        <i class="nav-icon fas fa-home text-orange"></i>
-        <p>Dashboard</p>
+        <i class="nav-icon fas fa-tachometer-alt text-orange"></i>
+        <p>Admin Dashboard</p>
     </a>
 </li>
 
+<li class="nav-item">
+    <a href="#" class="nav-link">
+        <i class="nav-icon fas fa-user-md text-orange"></i>
+        <p>Doctor Dashboard</p>
+    </a>
+</li>
 
-<li class="nav-item has-treeview {{ Request::is('doctors*') || Request::is('doctor-notes*') || Request::is('performances*') || Request::is('doctor-schedules*') ? 'menu-open' : '' }}">
-    <a href="#" class="nav-link {{ Request::is('doctors*') || Request::is('doctor-notes*') || Request::is('performances*') || Request::is('doctor-schedules*') ? 'active' : '' }}">
+<li class="nav-item">
+    <a href="#" class="nav-link">
+        <i class="nav-icon fas fa-pills text-orange"></i>
+        <p>Pharmacy Dashboard</p>
+    </a>
+</li>
+
+<li class="nav-item">
+    <a href="#" class="nav-link">
+        <i class="nav-icon fas fa-desktop text-orange"></i>
+        <p>Reception Dashboard</p>
+    </a>
+</li>
+
+<li class="nav-item">
+    <a href="#" class="nav-link">
+        <i class="nav-icon fas fa-calculator text-orange"></i>
+        <p>Accountant Dashboard</p>
+    </a>
+</li>
+
+<li class="nav-item">
+    <a href="#" class="nav-link">
+        <i class="nav-icon fas fa-users text-orange"></i>
+        <p>H.R Dashboard</p>
+    </a>
+</li>
+
+<li class="nav-item has-treeview {{ Request::is('doctors*') || Request::is('notes*') || Request::is('performances*') || Request::is('schedules*') ? 'menu-open' : '' }}">
+    <a href="#" class="nav-link {{ Request::is('doctors*') || Request::is('notes*') || Request::is('performances*') || Request::is('schedules*') ? 'active' : '' }}">
         <i class="nav-icon fas fa-user-md text-orange"></i>
         <p>
             Doctor Management
@@ -96,7 +130,7 @@
         <li class="nav-item">
             <a href="{{ route('staff.index') }}" class="nav-link {{ Request::is('staff*') ? 'active' : '' }}">
                 <i class="nav-icon fas fa-users text-success"></i>
-                <p>All Staff</p>
+                <p>Staff</p>
             </a>
         </li>
         <li class="nav-item">
@@ -109,6 +143,79 @@
             <a href="{{ route('technicians.index') }}" class="nav-link {{ Request::is('technicians*') ? 'active' : '' }}">
                 <i class="nav-icon fas fa-microscope text-success"></i>
                 <p>Technicians</p>
+            </a>
+        </li>
+    </ul>
+</li>
+
+<li class="nav-item has-treeview {{ Request::is('billings*') || Request::is('invoices*') || Request::is('insurances*') || Request::is('payments*') ||  Request::is('methods*') || Request::is('expenses*') ? 'menu-open' : '' }}">
+    <a href="#" class="nav-link {{ Request::is('billings*') || Request::is('invoices*') || Request::is('insurances*') || Request::is('payments*') || Request::is('methods*') ||  Request::is('expenses*') ? 'active' : '' }}">
+        <i class="nav-icon fas fa-file-invoice-dollar text-orange"></i>
+        <p>
+            Finance Management
+            <i class="fas fa-angle-left right text-orange"></i>
+        </p>
+    </a>
+    <ul class="nav nav-treeview">
+        <li class="nav-item">
+            <a href="{{ route('billings.index') }}" class="nav-link {{ Request::is('billings*') ? 'active' : '' }}">
+                <i class="nav-icon fas fa-file-invoice-dollar text-success"></i>
+                <p>Billing</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="{{ route('invoices.index') }}" class="nav-link {{ Request::is('invoices*') ? 'active' : '' }}">
+                <i class="nav-icon fas fa-receipt text-success"></i>
+                <p>Invoices</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="{{ route('insurances.index') }}" class="nav-link {{ Request::is('insurances*') ? 'active' : '' }}">
+                <i class="nav-icon fas fa-file-medical text-success"></i>
+                <p>Insurance</p>
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a href="{{ route('expenses.index') }}" class="nav-link {{ Request::is('expenses*') ? 'active' : '' }}">
+                <i class="nav-icon fas fa-wallet text-success"></i>
+                <p>Expenses</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="{{ route('payments.index') }}" class="nav-link {{ Request::is('payments*') ? 'active' : '' }}">
+                <i class="nav-icon fas fa-credit-card text-success"></i>
+                <p>Payments</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="{{ route('methods.index') }}" class="nav-link {{ Request::is('methods*') ? 'active' : '' }}">
+                <i class="nav-icon fas fa-credit-card text-success"></i>
+                <p>Payment Methods</p>
+            </a>
+        </li>
+    </ul>
+</li>
+
+<li class="nav-item has-treeview {{ Request::is('reports*') || Request::is('predictions*') ? 'menu-open' : '' }}">
+    <a href="#" class="nav-link {{ Request::is('reports*') || Request::is('predictions*') ? 'active' : '' }}">
+        <i class="nav-icon fas fa-chart-pie text-orange"></i>
+        <p>
+            Reports & Analytics
+            <i class="fas fa-angle-left right text-orange"></i>
+        </p>
+    </a>
+    <ul class="nav nav-treeview">
+        <li class="nav-item">
+            <a href="{{ route('reports.index') }}" class="nav-link {{ Request::is('reports*') ? 'active' : '' }}">
+                <i class="nav-icon fas fa-chart-bar text-success"></i>
+                <p>Reports</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="{{ route('predictions.index') }}" class="nav-link {{ Request::is('predictions*') ? 'active' : '' }}">
+                <i class="nav-icon fas fa-chart-line text-success"></i>
+                <p>Predictions</p>
             </a>
         </li>
     </ul>
@@ -157,55 +264,6 @@
             <a href="{{ route('appointments.index') }}" class="nav-link {{ Request::is('appointments*') ? 'active' : '' }}">
                 <i class="nav-icon fas fa-calendar-alt text-success"></i>
                 <p>Appointments</p>
-            </a>
-        </li>
-    </ul>
-</li>
-
-<li class="nav-item has-treeview {{ Request::is('billings*') || Request::is('invoices*') || Request::is('insurances*') || Request::is('payments*') ||  Request::is('methods*') || Request::is('expenses*') ? 'menu-open' : '' }}">
-    <a href="#" class="nav-link {{ Request::is('billings*') || Request::is('invoices*') || Request::is('insurances*') || Request::is('payments*') || Request::is('methods*') ||  Request::is('expenses*') ? 'active' : '' }}">
-        <i class="nav-icon fas fa-file-invoice-dollar text-orange"></i>
-        <p>
-            Accounts
-            <i class="fas fa-angle-left right text-orange"></i>
-        </p>
-    </a>
-    <ul class="nav nav-treeview">
-        <li class="nav-item">
-            <a href="{{ route('billings.index') }}" class="nav-link {{ Request::is('billings*') ? 'active' : '' }}">
-                <i class="nav-icon fas fa-file-invoice-dollar text-success"></i>
-                <p>Billing</p>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a href="{{ route('invoices.index') }}" class="nav-link {{ Request::is('invoices*') ? 'active' : '' }}">
-                <i class="nav-icon fas fa-receipt text-success"></i>
-                <p>Invoices</p>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a href="{{ route('insurances.index') }}" class="nav-link {{ Request::is('insurances*') ? 'active' : '' }}">
-                <i class="nav-icon fas fa-file-medical text-success"></i>
-                <p>Insurance</p>
-            </a>
-        </li>
-        
-        <li class="nav-item">
-            <a href="{{ route('expenses.index') }}" class="nav-link {{ Request::is('expenses*') ? 'active' : '' }}">
-                <i class="nav-icon fas fa-wallet text-success"></i>
-                <p>Expenses</p>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a href="{{ route('payments.index') }}" class="nav-link {{ Request::is('payments*') ? 'active' : '' }}">
-                <i class="nav-icon fas fa-credit-card text-success"></i>
-                <p>Payments</p>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a href="{{ route('methods.index') }}" class="nav-link {{ Request::is('methods*') ? 'active' : '' }}">
-                <i class="nav-icon fas fa-credit-card text-success"></i>
-                <p>Payment Methods</p>
             </a>
         </li>
     </ul>
@@ -260,30 +318,6 @@
             <a href="{{ route('notifications.index') }}" class="nav-link {{ Request::is('notifications*') ? 'active' : '' }}">
                 <i class="nav-icon fas fa-bell text-success"></i>
                 <p>Notifications</p>
-            </a>
-        </li>
-    </ul>
-</li>
-
-<li class="nav-item has-treeview {{ Request::is('reports*') || Request::is('predictions*') ? 'menu-open' : '' }}">
-    <a href="#" class="nav-link {{ Request::is('reports*') || Request::is('predictions*') ? 'active' : '' }}">
-        <i class="nav-icon fas fa-chart-pie text-orange"></i>
-        <p>
-            Reports & Analytics
-            <i class="fas fa-angle-left right text-orange"></i>
-        </p>
-    </a>
-    <ul class="nav nav-treeview">
-        <li class="nav-item">
-            <a href="{{ route('reports.index') }}" class="nav-link {{ Request::is('reports*') ? 'active' : '' }}">
-                <i class="nav-icon fas fa-chart-bar text-success"></i>
-                <p>Reports</p>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a href="{{ route('predictions.index') }}" class="nav-link {{ Request::is('predictions*') ? 'active' : '' }}">
-                <i class="nav-icon fas fa-chart-line text-success"></i>
-                <p>Predictions</p>
             </a>
         </li>
     </ul>
