@@ -4,7 +4,12 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Doctor;
+use App\Models\Staff;
+use App\Models\Patient;
 use App\Models\Appointment;
+use App\Models\Notification;
+use App\Models\Billing;
+use App\Models\Record;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -12,24 +17,39 @@ class HomeController extends Controller
     public function redirect(){
         if(Auth::check()) // check if the user is logged in
         {
-            // If the user is a doctor (usertype 0), show the doctor view
             if(Auth::user()->usertype == '0')
             {
-                $doctor = Doctor::all(); // Make sure 'Doctor' is correctly capitalized
-                return view('home.home', compact('doctor'));
+                $user = User::all();
+                $doctor = Doctor::all();
+                $patient = Patient::all();
+                $appointment = Appointment::all();
+                $staff = Staff::all();
+                $notification = Notification::all();
+                $billing = Billing::all();
+                $record = Record::all();
+                return view('home.home', compact('user', 'doctor', 'patient', 'appointment', 'staff', 'notification', 'billing', 'record'));
             }
             else
             {
-                // For other user types, show the admin view
-                return view('home');
+                $totalUsers = User::count();
+                $totalDoctors = Doctor::count();
+                $totalPatients = Patient::count();
+                $totalAppointments = Appointment::count();
+                $totalStaff = Staff::count();
+                $totalNotification = Notification::count();
+                $totalBillings = Billing::count();
+                $totalRecords = Record::count();
+                
+    
+                return view('home', compact('totalUsers', 'totalDoctors', 'totalPatients', 'totalAppointments', 'totalStaff', 'totalNotification', 'totalBillings', 'totalRecords'));
             }
         }
         else
         {
-            // If the user is not authenticated, redirect back
             return redirect()->back();
         }
     }
+    
     
 
     public function index(){
