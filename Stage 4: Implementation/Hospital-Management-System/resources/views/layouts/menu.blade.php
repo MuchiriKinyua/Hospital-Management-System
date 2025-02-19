@@ -1,21 +1,7 @@
 <li class="nav-item">
     <a href="{{ route('home') }}" class="nav-link {{ Request::is('home') ? 'active' : '' }}">
         <i class="nav-icon fas fa-home text-success"></i>
-        <p>Home</p>
-    </a>
-</li>
-
-<li class="nav-item">
-    <a href="{{ route('patients.index') }}" class="nav-link {{ Request::is('patients*') ? 'active' : '' }}">
-        <i class="nav-icon fas fa-user-injured" style="color: green;"></i>
-        <p>Patients</p>
-    </a>
-</li>
-
-<li class="nav-item">
-    <a href="{{ route('appointments.index') }}" class="nav-link {{ Request::is('appointments*') ? 'active' : '' }}">
-        <i class="nav-icon fas fa-calendar-alt text-success"></i>
-        <p>Appointments</p>
+        <p>Dashboard</p>
     </a>
 </li>
 
@@ -27,9 +13,23 @@
 </li>
 
 <li class="nav-item">
+    <a href="{{ route('patients.index') }}" class="nav-link {{ Request::is('patients*') ? 'active' : '' }}">
+        <i class="nav-icon fas fa-user-injured" style="color: green;"></i>
+        <p>Patients</p>
+    </a>
+</li>
+
+<li class="nav-item">
     <a href="{{ route('staff.index') }}" class="nav-link {{ Request::is('staff*') ? 'active' : '' }}">
         <i class="nav-icon fas fa-users" style="color: green;"></i>
         <p>Staff</p>
+    </a>
+</li>
+
+<li class="nav-item">
+    <a href="{{ route('appointments.index') }}" class="nav-link {{ Request::is('appointments*') ? 'active' : '' }}">
+        <i class="nav-icon fas fa-calendar-alt text-success"></i>
+        <p>Appointments</p>
     </a>
 </li>
 
