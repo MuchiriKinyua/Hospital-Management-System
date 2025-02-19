@@ -8,7 +8,7 @@
 
   <meta name="copyright" content="MACode ID, https://macodeid.com/">
 
-  <title>KU Hospital</title>
+  <title>Loresho Hospital</title>
 
   <link rel="stylesheet" href="../assets/css/maicons.css">
 
@@ -50,7 +50,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-light shadow-sm">
       <div class="container">
-        <a class="navbar-brand" href="{{url('/')}}"><span class="text-primary">KU</span>-Hospital</a>
+        <a class="navbar-brand" href="{{url('/')}}"><span class="text-primary">Loresho</span> Hospital</a>
 
         <form action="#">
           <div class="input-group input-navbar">
