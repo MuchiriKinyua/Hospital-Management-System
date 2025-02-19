@@ -25,9 +25,9 @@ class Notification extends Model
     ];
 
     public static array $rules = [
+        'notifiable_id' => 'required',
         'type' => 'required|string|max:255',
         'notifiable_type' => 'required|string|max:255',
-        'notifiable_id' => 'required',
         'data' => 'required|string|max:65535',
         'read_at' => 'nullable',
         'created_at' => 'nullable',

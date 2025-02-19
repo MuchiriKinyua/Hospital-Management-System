@@ -51,9 +51,39 @@ class Patient extends Model
         return $this->hasMany(\App\Models\Billing::class, 'patient_id');
     }
 
+    public function emergencies(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(\App\Models\Emergency::class, 'patient_id');
+    }
+
+    public function insurances(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(\App\Models\Insurance::class, 'patient_id');
+    }
+
+    public function invoices(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(\App\Models\Invoice::class, 'patient_id');
+    }
+
+    public function notes(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(\App\Models\Note::class, 'patient_id');
+    }
+
+    public function payments(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(\App\Models\Payment::class, 'patient_id');
+    }
+
     public function records(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(\App\Models\Record::class, 'patient_id');
+    }
+
+    public function tests(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(\App\Models\Test::class, 'patient_id');
     }
 
     public function wards(): \Illuminate\Database\Eloquent\Relations\HasMany

@@ -35,5 +35,13 @@ class Test extends Model
         'updated_at' => 'required'
     ];
 
-    
+    public function doctor(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(\App\Models\Doctor::class, 'doctor_id');
+    }
+
+    public function patient(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(\App\Models\Patient::class, 'patient_id');
+    }
 }
