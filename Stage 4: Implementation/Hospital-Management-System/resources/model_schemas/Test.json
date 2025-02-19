@@ -106,5 +106,13 @@
         "inForm": false,
         "inIndex": false,
         "inView": false
+    },
+    {
+        "type": "relation",
+        "relation": "mt1,Doctor,doctor_id"
+    },
+    {
+        "type": "relation",
+        "relation": "mt1,Patient,patient_id"
     }
 ]

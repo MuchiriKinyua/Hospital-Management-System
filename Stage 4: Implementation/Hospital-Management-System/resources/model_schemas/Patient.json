@@ -149,7 +149,31 @@
     },
     {
         "type": "relation",
+        "relation": "1tm,Emergency,patient_id"
+    },
+    {
+        "type": "relation",
+        "relation": "1tm,Insurance,patient_id"
+    },
+    {
+        "type": "relation",
+        "relation": "1tm,Invoice,patient_id"
+    },
+    {
+        "type": "relation",
+        "relation": "1tm,Note,patient_id"
+    },
+    {
+        "type": "relation",
+        "relation": "1tm,Payment,patient_id"
+    },
+    {
+        "type": "relation",
         "relation": "1tm,Record,patient_id"
+    },
+    {
+        "type": "relation",
+        "relation": "1tm,Test,patient_id"
     },
     {
         "type": "relation",
