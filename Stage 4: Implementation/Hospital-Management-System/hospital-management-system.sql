@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Feb 19, 2025 at 07:13 PM
+-- Generation Time: Feb 19, 2025 at 09:30 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -20,6 +20,24 @@ SET time_zone = "+00:00";
 --
 -- Database: `hospital-management-system`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admissions`
+--
+
+CREATE TABLE `admissions` (
+  `id` int(11) NOT NULL,
+  `ward_id` int(11) DEFAULT NULL,
+  `patient_id` int(11) DEFAULT NULL,
+  `admitted_by` varchar(100) DEFAULT NULL,
+  `reason` varchar(600) DEFAULT NULL,
+  `admission_date` datetime DEFAULT current_timestamp(),
+  `discharge_date` datetime DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -156,10 +174,10 @@ CREATE TABLE `failed_jobs` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `insurance`
+-- Table structure for table `insurances`
 --
 
-CREATE TABLE `insurance` (
+CREATE TABLE `insurances` (
   `id` int(11) NOT NULL,
   `patient_id` int(11) DEFAULT NULL,
   `provider_name` varchar(100) DEFAULT NULL,
@@ -627,6 +645,24 @@ CREATE TABLE `predictions` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `prescriptions`
+--
+
+CREATE TABLE `prescriptions` (
+  `id` int(11) NOT NULL,
+  `patient_id` int(11) DEFAULT NULL,
+  `doctor_id` int(11) DEFAULT NULL,
+  `medicine` varchar(100) DEFAULT NULL,
+  `dosage` varchar(50) DEFAULT NULL,
+  `duration` varchar(20) DEFAULT NULL,
+  `instructions` varchar(20) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `records`
 --
 
@@ -670,6 +706,22 @@ CREATE TABLE `requests` (
   `issue` varchar(600) DEFAULT NULL,
   `reported_by` varchar(100) DEFAULT NULL,
   `status` varchar(20) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `results`
+--
+
+CREATE TABLE `results` (
+  `id` int(11) NOT NULL,
+  `doctor_id` int(11) DEFAULT NULL,
+  `patient_id` int(11) DEFAULT NULL,
+  `test_name` varchar(100) DEFAULT NULL,
+  `result` varchar(50) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -1221,6 +1273,14 @@ CREATE TABLE `wards` (
 --
 
 --
+-- Indexes for table `admissions`
+--
+ALTER TABLE `admissions`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_admissions_patients` (`patient_id`),
+  ADD KEY `fk_admissions_wards` (`ward_id`);
+
+--
 -- Indexes for table `appointments`
 --
 ALTER TABLE `appointments`
@@ -1268,9 +1328,9 @@ ALTER TABLE `failed_jobs`
   ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
 
 --
--- Indexes for table `insurance`
+-- Indexes for table `insurances`
 --
-ALTER TABLE `insurance`
+ALTER TABLE `insurances`
   ADD PRIMARY KEY (`id`),
   ADD KEY `fk_insurance_patients` (`patient_id`);
 
@@ -1398,6 +1458,14 @@ ALTER TABLE `predictions`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `prescriptions`
+--
+ALTER TABLE `prescriptions`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_prescriptions_doctors` (`doctor_id`),
+  ADD KEY `fk_prescriptions_patients` (`patient_id`);
+
+--
 -- Indexes for table `records`
 --
 ALTER TABLE `records`
@@ -1416,6 +1484,14 @@ ALTER TABLE `reports`
 --
 ALTER TABLE `requests`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `results`
+--
+ALTER TABLE `results`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_results_doctors` (`doctor_id`),
+  ADD KEY `fk_results_patients` (`patient_id`);
 
 --
 -- Indexes for table `roles`
@@ -1506,6 +1582,12 @@ ALTER TABLE `wards`
 --
 
 --
+-- AUTO_INCREMENT for table `admissions`
+--
+ALTER TABLE `admissions`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `billings`
 --
 ALTER TABLE `billings`
@@ -1536,9 +1618,9 @@ ALTER TABLE `failed_jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `insurance`
+-- AUTO_INCREMENT for table `insurances`
 --
-ALTER TABLE `insurance`
+ALTER TABLE `insurances`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
@@ -1620,6 +1702,12 @@ ALTER TABLE `predictions`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `prescriptions`
+--
+ALTER TABLE `prescriptions`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `records`
 --
 ALTER TABLE `records`
@@ -1635,6 +1723,12 @@ ALTER TABLE `reports`
 -- AUTO_INCREMENT for table `requests`
 --
 ALTER TABLE `requests`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `results`
+--
+ALTER TABLE `results`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
@@ -1696,6 +1790,13 @@ ALTER TABLE `wards`
 --
 
 --
+-- Constraints for table `admissions`
+--
+ALTER TABLE `admissions`
+  ADD CONSTRAINT `fk_admissions_patients` FOREIGN KEY (`patient_id`) REFERENCES `patients` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_admissions_wards` FOREIGN KEY (`ward_id`) REFERENCES `wards` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
 -- Constraints for table `billings`
 --
 ALTER TABLE `billings`
@@ -1715,9 +1816,9 @@ ALTER TABLE `emergencies`
   ADD CONSTRAINT `fk_emergencies_patients` FOREIGN KEY (`patient_id`) REFERENCES `patients` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Constraints for table `insurance`
+-- Constraints for table `insurances`
 --
-ALTER TABLE `insurance`
+ALTER TABLE `insurances`
   ADD CONSTRAINT `fk_insurance_patients` FOREIGN KEY (`patient_id`) REFERENCES `patients` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
@@ -1760,11 +1861,25 @@ ALTER TABLE `performances`
   ADD CONSTRAINT `fk_performances_doctors` FOREIGN KEY (`doctor_id`) REFERENCES `doctors` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
+-- Constraints for table `prescriptions`
+--
+ALTER TABLE `prescriptions`
+  ADD CONSTRAINT `fk_prescriptions_doctors` FOREIGN KEY (`doctor_id`) REFERENCES `doctors` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_prescriptions_patients` FOREIGN KEY (`patient_id`) REFERENCES `patients` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
 -- Constraints for table `records`
 --
 ALTER TABLE `records`
   ADD CONSTRAINT `fk_records_doctors` FOREIGN KEY (`doctor_id`) REFERENCES `doctors` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_records_patients` FOREIGN KEY (`patient_id`) REFERENCES `patients` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `results`
+--
+ALTER TABLE `results`
+  ADD CONSTRAINT `fk_results_doctors` FOREIGN KEY (`doctor_id`) REFERENCES `doctors` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_results_patients` FOREIGN KEY (`patient_id`) REFERENCES `patients` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `schedules`
