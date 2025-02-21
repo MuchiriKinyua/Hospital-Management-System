@@ -6,7 +6,7 @@
 
 ![Screenshot from 2025-02-21 05-16-07](https://github.com/user-attachments/assets/8288f08e-c975-43a8-ab43-429592bd6efb)
 
-The Hospital Management System (HMS) is a comprehensive solution designed to streamline hospital operations. This system provides functionalities for managing patients, doctors, appointments, billing, and more. The application is built using Laravel (backend) and integrates with Flask for machine learning-based disease prediction.
+The Hospital Management System (HMS) is a comprehensive solution designed to streamline hospital operations. This system provides functionalities for managing patients, doctors, appointments, billing, and more. The application is built using Laravel (backend) and integrates with Flask for machine learning-based disease prediction and a ChatBot to help users navigate through the system.
 
 # Features
 
