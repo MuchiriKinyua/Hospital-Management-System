@@ -65,6 +65,7 @@ Python 3.8+ (for Flask ML model)
 Clone the repository:
 
 git clone https://github.com/MuchiriKinyua/hospital-management.git
+
 cd hospital-management
 
 Install Laravel dependencies:
