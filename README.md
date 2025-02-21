@@ -100,6 +100,8 @@ Open the application in the browser:
 
 http://127.0.0.1:8000/
 
+![Screenshot from 2025-02-21 05-17-10](https://github.com/user-attachments/assets/f5950055-b8a4-4587-9895-1b00017633a7)
+
 # API Endpoints (For ML Predictions)
 
 Endpoint
@@ -113,8 +115,6 @@ Description
 POST
 
 Predicts if the tumor is Malignant or Benign
-
-![Screenshot from 2025-02-21 05-17-10](https://github.com/user-attachments/assets/f5950055-b8a4-4587-9895-1b00017633a7)
 
 /shap-importance
 
