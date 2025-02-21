@@ -1,60 +1,128 @@
-# Understanding Flu Vaccine Hesitancy
-## A Machine Learning Approach for Informed Public Health Intervention¶
-![image](https://github.com/KillionMokaya/-Flu-Vaccine-Hesitancy-Classification/assets/69270616/c08595c8-fd6c-4c05-b76a-3a880c61b59e)
+# Hospital Management System (HMS)
 
-### 1. Introduction
-#### 1.1 Business Understanding
-This project is aimed to provide insights into predicting seasonal flu vaccination status accurately and identifying key factors influencing vaccination decisions. The results from this study could contribute to optimizing pro-vaccination efforts and targeting specific subgroups to maximize the benefits of herd immunity, particularly in the context of seasonal flu.
-#### 1.2 Problem Statement
-Vaccination reduces co-infection risk and eases healthcare strain, yet vaccine skepticism is causing immunization rates to decline.
-Flu vaccine hesitancy is a major concern, hindering efforts against seasonal flu outbreaks. Despite the flu causing millions of hospitalizations and 52,000 deaths annually, only 51.4% received the vaccine in the 2021-22 season. 
-Vaccine hesitancy leads to disease spread, strains healthcare, and may cause co-infections, causing economic burdens and disrupting daily life.
-Prompt flu vaccination is crucial, especially during fall and winter when flu spreads
-Flu vaccine hesitancy is driven by factors like misinformation, safety fears and beliefs. Understanding these helps design effective interventions.
-#### 1.3 Main Objective
-To utilize machine learning to understand flu vaccine hesitancy by predicting the likelihood of individuals receiving their seasonal flu vaccines.
- - To identify socio-cultural, psychological, and communication-related factors that affect flu vaccine hesitancy.
- - Develop a predictive model for vaccine hesitancy based on historical data.
-- Develop tailored recommendations to increase flu vaccine uptake. 
+![Screenshot from 2025-02-21 05-16-28](https://github.com/user-attachments/assets/4cfcf315-4560-45d2-82d8-110ab6007bb0)
 
-### 2. Data Understanding
-![image](https://github.com/KillionMokaya/-Flu-Vaccine-Hesitancy-Classification/assets/69270616/e9df5580-b75f-4f80-9eae-0683026d9794)
+# Overview
 
- - Target variable: Seasonal_vaccine - Whether respondent received seasonal flu vaccine or not
- - Socio-Demographic and Personal Information:
-Age, gender, race, income level and education 
-     employment_status, employment_industry, employment_occupation
- - Health-related Variables:
-health_insurance, behavioral_antiviral_meds, behavioral_avoidance
-     opinion_seas_vacc_effective, opinion_seas_risk,   
-     opinion_seas_sick_from_vacc                      
- - Household Information:
-household_adults, household_children.
+![Screenshot from 2025-02-21 05-16-07](https://github.com/user-attachments/assets/8288f08e-c975-43a8-ab43-429592bd6efb)
 
-### 3. Models Used
- - Logistic Regression
- - Decision Trees
- - Random Forest
- - Ensemble Method - XGBoost and GridSearchCV
- - KNN
- - Bayes Classification
+The Hospital Management System (HMS) is a comprehensive solution designed to streamline hospital operations. This system provides functionalities for managing patients, doctors, appointments, billing, and more. The application is built using Laravel (backend) and integrates with Flask for machine learning-based disease prediction.
 
-Here is a depiction of the prominent factors/features identified by the XGBoost classifier, which hold the potential to mitigate vaccine hesitancy.
+# Features
 
-![image](https://github.com/KillionMokaya/-Flu-Vaccine-Hesitancy-Classification/assets/69270616/7b680f37-6764-4fd3-a1b5-75a85e88363f)
+User Roles & Authentication: Secure access with roles like Super Admin, Doctor, Nurse, and Receptionist.
 
-### 4. Recommendations
-To enhance the uptake of seasonal flu vaccination, the following strategies could be considered by the government:
- - Enhance Public Awareness Regarding Vaccine Effectiveness: Efforts should focus on increasing public knowledge about   the vaccine's effectiveness in safeguarding against the flu. These awareness initiatives could be executed at the community or national level. Disseminating credible evidence through channels like television or online advertisements can facilitate informed decision-making. 
- - Encourage Regular Physician Recommendations: To bolster herd immunity, it is advisable for healthcare providers to consistently advise their patients to undergo seasonal flu vaccination annually. This personalized approach may yield better results compared to generalized vaccine promotion through alternative means. Nonetheless, comprehensive campaigns remain vital for reaching individuals who may not have routine access to healthcare services.
- - To elevate the overall vaccination rate against seasonal flu, initiatives should prioritize encouraging, educating, and ensuring healthcare access for the following demographics:
+Patient Management: CRUD operations for patient records, medical history tracking.
 
-      -Individuals aged 18 to 34
-      - Uninsured individuals
-      - Renters
-      - Communities of color
-      - Those with income below the poverty threshold
-      - Individuals without a high school diploma
+Doctor & Staff Management: Assign doctors, nurses, and other staff to departments.
 
+Appointments & Scheduling: Book, update, and manage patient appointments.
 
+Billing & Invoicing: Generate invoices for medical treatments and consultations.
 
+Medical Reports & Diagnostics: Integration with ML models for breast cancer prediction using Flask.
+
+Role-based Sidebar Navigation: Dynamic sidebar visibility based on user role.
+
+Notification System: Real-time alerts for doctors and staff.
+
+Dashboard & Reports: Admin dashboard with key hospital metrics.
+
+IoT Integration (Future Scope): For monitoring patient vitals in real-time.
+
+# Technologies Used
+
+Backend: Laravel (PHP Framework)
+
+Frontend: Blade Templates (Bootstrap, jQuery, AJAX)
+
+Database: MySQL
+
+Machine Learning Integration: Flask (Python, OpenCV, SHAP/LIME for explainability)
+
+Cloud Storage: AWS S3 (for medical records, prescriptions, images)
+
+Geofencing: Location-based attendance tracking
+
+Authentication: Laravel Breeze/Sanctum for API security
+
+# Installation Guide
+
+## Prerequisites
+
+PHP 8+
+
+Composer
+
+Node.js & npm
+
+MySQL / MariaDB
+
+Python 3.8+ (for Flask ML model)
+
+# Steps to Install
+
+Clone the repository:
+
+git clone https://github.com/MuchiriKinyua/hospital-management.git
+cd hospital-management
+
+Install Laravel dependencies:
+
+composer install
+
+Create and configure the .env file:
+
+cp .env.example .env
+php artisan key:generate
+
+Set up database credentials in .env.
+
+Run migrations and seed data:
+
+php artisan migrate --seed
+
+Install frontend dependencies:
+
+npm install && npm run dev
+
+Start the Laravel server:
+
+php artisan serve
+
+Run Flask ML Server (For Disease Prediction):
+
+cd flask-ml-api
+python app.py
+
+Open the application in the browser:
+
+http://127.0.0.1:8000/
+
+# API Endpoints (For ML Predictions)
+
+Endpoint
+
+Method
+
+Description
+
+/predict/breast-cancer
+
+POST
+
+Predicts if the tumor is Malignant or Benign
+
+![Screenshot from 2025-02-21 05-17-10](https://github.com/user-attachments/assets/f5950055-b8a4-4587-9895-1b00017633a7)
+
+/shap-importance
+
+GET
+
+Returns feature importance using SHAP
+
+# Future Enhancements
+
+Mobile App (Flutter) for patient-doctor interaction.
+
+Blockchain-based Medical Records for better security.
