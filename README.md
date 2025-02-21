@@ -1,4 +1,4 @@
-# Hospital Management System (HMS)
+# Hospital Management System
 
 ![Screenshot from 2025-02-21 05-16-28](https://github.com/user-attachments/assets/4cfcf315-4560-45d2-82d8-110ab6007bb0)
 
