@@ -107,6 +107,16 @@
                 </div>
             </div>
 
+            <div class="row">
+                <div class="col-12">
+                    <a href="{{ url('breast-cancer') }}" 
+                       class="d-block p-4 bg-light text-dark text-center font-weight-bold"
+                       style="text-decoration: none; font-size: 24px; border-radius: 5px;">
+                       Pneumonia
+                    </a>
+                </div>
+            </div>
+
         </div>
     </section>
 
