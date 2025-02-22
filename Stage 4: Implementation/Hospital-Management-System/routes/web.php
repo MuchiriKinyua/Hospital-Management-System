@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\FluController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +31,7 @@ Route::resource('doctors', App\Http\Controllers\DoctorController::class);
 Route::resource('notifications', App\Http\Controllers\NotificationController::class);
 Route::resource('predictions', App\Http\Controllers\PredictionController::class);
 Route::get('/breast-cancer', [BreastCancerController::class, 'breastcancer']);
+Route::get('/flu', [FluController::class, 'flu']);
 Route::resource('billings', App\Http\Controllers\BillingController::class);
 Route::resource('patients', App\Http\Controllers\PatientController::class);
 Route::resource('records', App\Http\Controllers\RecordController::class);
