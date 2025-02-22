@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\DataTables\PermissionDataTable;
 use App\Http\Requests\CreatePermissionRequest;
 use App\Http\Requests\UpdatePermissionRequest;
 use App\Http\Controllers\AppBaseController;
@@ -23,11 +22,13 @@ class PermissionController extends AppBaseController
     /**
      * Display a listing of the Permission.
      */
-    public function index(PermissionDataTable $permissionDataTable)
+    public function index(Request $request)
     {
-    return $permissionDataTable->render('permissions.index');
-    }
+        $permissions = $this->permissionRepository->paginate(10);
 
+        return view('permissions.index')
+            ->with('permissions', $permissions);
+    }
 
     /**
      * Show the form for creating a new Permission.

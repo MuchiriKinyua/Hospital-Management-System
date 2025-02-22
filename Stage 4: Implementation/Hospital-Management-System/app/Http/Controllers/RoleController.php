@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\DataTables\RoleDataTable;
 use App\Http\Requests\CreateRoleRequest;
 use App\Http\Requests\UpdateRoleRequest;
 use App\Http\Controllers\AppBaseController;
@@ -23,11 +22,13 @@ class RoleController extends AppBaseController
     /**
      * Display a listing of the Role.
      */
-    public function index(RoleDataTable $roleDataTable)
+    public function index(Request $request)
     {
-    return $roleDataTable->render('roles.index');
-    }
+        $roles = $this->roleRepository->paginate(10);
 
+        return view('roles.index')
+            ->with('roles', $roles);
+    }
 
     /**
      * Show the form for creating a new Role.

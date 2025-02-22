@@ -2,8 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BreastCancerController;
-use App\Http\Controllers\PermissionController;
-use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
@@ -39,8 +37,6 @@ Route::resource('pharmacies', App\Http\Controllers\PharmacyController::class);
 Route::resource('staff', App\Http\Controllers\StaffController::class);
 Route::resource('tests', App\Http\Controllers\TestController::class);
 Route::resource('wards', App\Http\Controllers\WardController::class);
-Route::resource('roles', App\Http\Controllers\RoleController::class);
-Route::resource('permissions', App\Http\Controllers\PermissionController::class);
 Route::resource('users', UserController::class);
 
 Route::get('/add_doctor_view', [AdminController::class, 'addview']);
@@ -78,3 +74,5 @@ Route::resource('trails', App\Http\Controllers\TrailController::class);
 Route::resource('admissions', App\Http\Controllers\AdmissionController::class);
 Route::resource('prescriptions', App\Http\Controllers\PrescriptionController::class);
 Route::resource('results', App\Http\Controllers\ResultController::class);
+Route::resource('roles', App\Http\Controllers\RoleController::class);
+Route::resource('permissions', App\Http\Controllers\PermissionController::class);
