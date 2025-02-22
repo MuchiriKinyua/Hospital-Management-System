@@ -25,13 +25,5 @@ class Permission extends Model
         'updated_at' => 'nullable'
     ];
 
-    public function modelHasPermission(): \Illuminate\Database\Eloquent\Relations\HasOne
-    {
-        return $this->hasOne(\App\Models\ModelHasPermission::class);
-    }
-
-    public function roles(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
-    {
-        return $this->belongsToMany(\App\Models\Role::class, 'role_has_permissions');
-    }
+    
 }
