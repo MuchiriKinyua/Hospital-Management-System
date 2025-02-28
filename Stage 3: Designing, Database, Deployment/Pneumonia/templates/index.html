@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pneumonia Detection</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; padding: 50px; }
+        #preview { max-width: 300px; margin-top: 20px; display: none; }
+    </style>
+</head>
+<body>
+    <h1>Pneumonia Detection</h1>
+    <input type="file" id="fileInput" accept="image/*">
+    <button onclick="uploadImage()">Predict</button>
+    <img id="preview" src="" alt="Uploaded Image">
+    <h2 id="result"></h2>
+
+    <script>
+        function uploadImage() {
+            let fileInput = document.getElementById('fileInput');
+            if (fileInput.files.length === 0) {
+                alert('Please select an image');
+                return;
+            }
+            
+            let formData = new FormData();
+            formData.append('file', fileInput.files[0]);
+            
+            fetch('/predict', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    alert(data.error);
+                } else {
+                    document.getElementById('preview').src = data.image_url;
+                    document.getElementById('preview').style.display = 'block';
+                    document.getElementById('result').innerText = `Prediction: ${data.class} (Confidence: ${Math.round(data.confidence * 100)}%)`;
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        }
+    </script>
+</body>
+</html>
