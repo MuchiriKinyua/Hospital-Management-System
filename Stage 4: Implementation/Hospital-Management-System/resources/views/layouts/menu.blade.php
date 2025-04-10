@@ -49,12 +49,14 @@
         </p>
     </a>
     <ul class="nav nav-treeview">
+
         <li class="nav-item">
             <a href="{{ route('doctors.index') }}" class="nav-link {{ Request::is('doctors') || Request::is('doctors/*') ? 'active' : '' }}">
                 <i class="nav-icon fas fa-user-md text-success"></i>
                 <p>Doctors</p>
             </a>
         </li>
+
         <li class="nav-item">
             <a href="{{ route('notes.index') }}" class="nav-link {{ Request::is('doctor-notes') || Request::is('doctor-notes/*') ? 'active' : '' }}">
                 <i class="nav-icon fas fa-sticky-note text-success"></i>

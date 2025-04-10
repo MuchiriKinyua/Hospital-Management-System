@@ -78,3 +78,4 @@ Route::resource('prescriptions', App\Http\Controllers\PrescriptionController::cl
 Route::resource('results', App\Http\Controllers\ResultController::class);
 Route::resource('roles', App\Http\Controllers\RoleController::class);
 Route::resource('permissions', App\Http\Controllers\PermissionController::class);
+
