@@ -29,7 +29,7 @@ class Doctor extends Model
         'phone' => 'nullable|string|max:255',
         'room' => 'nullable|string|max:255',
         'speciality' => 'nullable|string|max:255',
-        'image' => 'nullable|string|max:255',
+        'image' => 'nullable|image|mimes:jpeg,png,jpg,gif',
         'created_at' => 'nullable',
         'updated_at' => 'nullable'
     ];

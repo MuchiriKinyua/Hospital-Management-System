@@ -41,16 +41,6 @@ class DoctorController extends AppBaseController
     /**
      * Store a newly created Doctor in storage.
      */
-    public function store(CreateDoctorRequest $request)
-    {
-        $input = $request->all();
-
-        $doctor = $this->doctorRepository->create($input);
-
-        Flash::success('Doctor saved successfully.');
-
-        return redirect(route('doctors.index'));
-    }
 
     /**
      * Display the specified Doctor.
@@ -87,22 +77,66 @@ class DoctorController extends AppBaseController
     /**
      * Update the specified Doctor in storage.
      */
-    public function update($id, UpdateDoctorRequest $request)
-    {
-        $doctor = $this->doctorRepository->find($id);
 
-        if (empty($doctor)) {
-            Flash::error('Doctor not found');
 
-            return redirect(route('doctors.index'));
-        }
+     public function store(CreateDoctorRequest $request)
+     {
+         $input = $request->all();
+     
+         // Validate image size and type
+         if ($request->hasFile('image')) {
+             $request->validate([
+                 'image' => 'image|mimes:jpeg,png,jpg,gif,svg',  
+             ]);
+     
+             $imageName = time() . '.' . $request->image->extension();
+             $request->image->move(public_path('images'), $imageName);
+             $input['image'] = $imageName;  // Store the image filename as a string
+         }
+     
+         $doctor = $this->doctorRepository->create($input);
+     
+         Flash::success('Doctor saved successfully.');
+     
+         return redirect(route('doctors.index'));
+     }
+     
+     public function update($id, UpdateDoctorRequest $request)
+     {
+         $doctor = $this->doctorRepository->find($id);
+     
+         if (empty($doctor)) {
+             Flash::error('Doctor not found');
+             return redirect(route('doctors.index'));
+         }
+     
+         $input = $request->all();
+     
+         // Validate image size and type
+         if ($request->hasFile('image')) {
+             $request->validate([
+                 'image' => 'image|mimes:jpeg,png,jpg,gif,svg', 
+             ]);
+     
+             // Delete the old image
+             if ($doctor->image) {
+                 unlink(public_path('images/' . $doctor->image));
+             }
+     
+             $imageName = time() . '.' . $request->image->extension();
+             $request->image->move(public_path('images'), $imageName);
+             $input['image'] = $imageName;  // Store the new image filename as a string
+         }
+     
+         $doctor = $this->doctorRepository->update($input, $id);
+     
+         Flash::success('Doctor updated successfully.');
+     
+         return redirect(route('doctors.index'));
+     }
+     
+     
 
-        $doctor = $this->doctorRepository->update($request->all(), $id);
-
-        Flash::success('Doctor updated successfully.');
-
-        return redirect(route('doctors.index'));
-    }
 
     /**
      * Remove the specified Doctor from storage.

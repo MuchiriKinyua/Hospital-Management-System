@@ -5,9 +5,6 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-12">
-                    <h1>
-                    Create Doctors
-                    </h1>
                 </div>
             </div>
         </div>
@@ -19,20 +16,20 @@
 
         <div class="card">
 
-            {!! Form::open(['route' => 'doctors.store']) !!}
+            {!! Form::open(['route' => 'doctors.store', 'files' => true]) !!}
+
+            
 
             <div class="card-body">
 
                 <div class="row">
                     @include('doctors.fields')
                 </div>
+                
 
             </div>
 
-            <div class="card-footer">
-                {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
-                <a href="{{ route('doctors.index') }}" class="btn btn-default"> Cancel </a>
-            </div>
+
 
             {!! Form::close() !!}
 

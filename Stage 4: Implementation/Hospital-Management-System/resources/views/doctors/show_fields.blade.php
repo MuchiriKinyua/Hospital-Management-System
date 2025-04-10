@@ -1,30 +1,14 @@
-<!-- Name Field -->
-<div class="col-sm-12">
-    {!! Form::label('name', 'Name:') !!}
-    <p>{{ $doctor->name }}</p>
-</div>
+<div class="container">
+    <h1 class="title">{{ $doctor->name }}</h1>
 
-<!-- Phone Field -->
-<div class="col-sm-12">
-    {!! Form::label('phone', 'Phone:') !!}
-    <p>{{ $doctor->phone }}</p>
-</div>
+    <div class="image-container">
+        <img height="200px" src="{{ asset('images/' . $doctor->image) }}" alt="{{ $doctor->name }}">
+    </div>
 
-<!-- Room Field -->
-<div class="col-sm-12">
-    {!! Form::label('room', 'Room:') !!}
-    <p>{{ $doctor->room }}</p>
+    <div class="description-box">
+        <h2>Doctor Details</h2>
+        <p><strong>Phone:</strong> {{ $doctor->phone }}</p>
+        <p><strong>Room:</strong> {{ $doctor->room }}</p>
+        <p><strong>Speciality:</strong> {{ $doctor->speciality }}</p>
+    </div>
 </div>
-
-<!-- Speciality Field -->
-<div class="col-sm-12">
-    {!! Form::label('speciality', 'Speciality:') !!}
-    <p>{{ $doctor->speciality }}</p>
-</div>
-
-<!-- Image Field -->
-<div class="col-sm-12">
-    {!! Form::label('image', 'Image:') !!}
-    <p>{{ $doctor->image }}</p>
-</div>
-
