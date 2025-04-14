@@ -79,6 +79,8 @@ class DoctorController extends AppBaseController
      */
 
 
+
+
      public function store(CreateDoctorRequest $request)
      {
          $input = $request->all();
@@ -135,9 +137,6 @@ class DoctorController extends AppBaseController
          return redirect(route('doctors.index'));
      }
      
-     
-
-
     /**
      * Remove the specified Doctor from storage.
      *

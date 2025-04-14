@@ -38,19 +38,6 @@ class PatientController extends AppBaseController
         return view('patients.create');
     }
 
-    /**
-     * Store a newly created Patient in storage.
-     */
-    public function store(CreatePatientRequest $request)
-    {
-        $input = $request->all();
-
-        $patient = $this->patientRepository->create($input);
-
-        Flash::success('Patient saved successfully.');
-
-        return redirect(route('patients.index'));
-    }
 
     /**
      * Display the specified Patient.
@@ -84,25 +71,62 @@ class PatientController extends AppBaseController
         return view('patients.edit')->with('patient', $patient);
     }
 
-    /**
-     * Update the specified Patient in storage.
-     */
-    public function update($id, UpdatePatientRequest $request)
-    {
-        $patient = $this->patientRepository->find($id);
+    public function store(CreatePatientRequest $request)
+{
+    $input = $request->all();
 
-        if (empty($patient)) {
-            Flash::error('Patient not found');
+    // Handle image upload
+    if ($request->hasFile('image')) {
+        $request->validate([
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg',
+        ]);
 
-            return redirect(route('patients.index'));
-        }
+        $imageName = time() . '.' . $request->image->extension();
+        $request->image->move(public_path('images'), $imageName);
+        $input['image'] = $imageName;
+    }
 
-        $patient = $this->patientRepository->update($request->all(), $id);
+    $patient = $this->patientRepository->create($input);
 
-        Flash::success('Patient updated successfully.');
+    Flash::success('Patient saved successfully.');
 
+    return redirect(route('patients.index'));
+}
+
+public function update($id, UpdatePatientRequest $request)
+{
+    $patient = $this->patientRepository->find($id);
+
+    if (empty($patient)) {
+        Flash::error('Patient not found');
         return redirect(route('patients.index'));
     }
+
+    $input = $request->all();
+
+    // Handle image upload
+    if ($request->hasFile('image')) {
+        $request->validate([
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg',
+        ]);
+
+        // Delete old image
+        if ($patient->image && file_exists(public_path('images/' . $patient->image))) {
+            unlink(public_path('images/' . $patient->image));
+        }
+
+        $imageName = time() . '.' . $request->image->extension();
+        $request->image->move(public_path('images'), $imageName);
+        $input['image'] = $imageName;
+    }
+
+    $patient = $this->patientRepository->update($input, $id);
+
+    Flash::success('Patient updated successfully.');
+
+    return redirect(route('patients.index'));
+}
+
 
     /**
      * Remove the specified Patient from storage.

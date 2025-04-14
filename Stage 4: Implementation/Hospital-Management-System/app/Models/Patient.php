@@ -17,7 +17,8 @@ class Patient extends Model
         'address',
         'blood_type',
         'allergies',
-        'medical_history'
+        'medical_history',
+        'image'
     ];
 
     protected $casts = [
@@ -29,7 +30,8 @@ class Patient extends Model
         'address' => 'string',
         'blood_type' => 'string',
         'allergies' => 'string',
-        'medical_history' => 'string'
+        'medical_history' => 'string',
+        'image' => 'string'
     ];
 
     public static array $rules = [
@@ -42,8 +44,9 @@ class Patient extends Model
         'blood_type' => 'nullable|string|max:10',
         'allergies' => 'nullable|string|max:30',
         'medical_history' => 'nullable|string|max:40',
-        'created_at' => 'required',
-        'updated_at' => 'required'
+        'image' => 'nullable|image|mimes:jpeg,png,jpg,gif',
+        'created_at' => 'nullable',
+        'updated_at' => 'nullable'
     ];
 
     public function billings(): \Illuminate\Database\Eloquent\Relations\HasMany

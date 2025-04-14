@@ -19,17 +19,12 @@
 
         <div class="card">
 
-            {!! Form::model($patient, ['route' => ['patients.update', $patient->id], 'method' => 'patch']) !!}
+            {!! Form::model($patient, ['route' => ['patients.update', $patient->id], 'method' => 'patch', 'files' => true]) !!}
 
             <div class="card-body">
                 <div class="row">
                     @include('patients.fields')
                 </div>
-            </div>
-
-            <div class="card-footer">
-                {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
-                <a href="{{ route('patients.index') }}" class="btn btn-default"> Cancel </a>
             </div>
 
             {!! Form::close() !!}
