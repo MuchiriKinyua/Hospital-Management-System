@@ -33,8 +33,8 @@ class Staff extends Model
         'email' => 'nullable|string|max:50',
         'salary' => 'nullable|string|max:20',
         'shift' => 'nullable|string|max:20',
-        'created_at' => 'required',
-        'updated_at' => 'required'
+        'created_at' => 'nullable',
+        'updated_at' => 'nullable'
     ];
 
     

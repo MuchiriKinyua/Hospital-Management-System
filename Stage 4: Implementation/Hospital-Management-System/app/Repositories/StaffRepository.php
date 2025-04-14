@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Models\Staff;
 use App\Repositories\BaseRepository;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 
 class StaffRepository extends BaseRepository
 {
@@ -25,4 +26,12 @@ class StaffRepository extends BaseRepository
     {
         return Staff::class;
     }
+
+
+    public function paginate(int $perPage, array $columns = ['*']): LengthAwarePaginator
+    {
+        return Staff::paginate($perPage, $columns);
+    }
+    
+
 }
