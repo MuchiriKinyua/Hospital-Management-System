@@ -19,7 +19,9 @@ use App\Http\Controllers\FluController;
 |
 */
 
-Route::get('/', [HomeController::class, 'index']);
+Route::get('/', function () {
+    return view('welcome');
+});
 
 Route::get('/home', [HomeController::class, 'redirect'])->middleware('auth', 'verified')->name('home');
 
